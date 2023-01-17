@@ -32,18 +32,23 @@
                 </div>
             </div>
         @elseif (auth()->user())
-        <div>
-            <div  class="d-flex justify-content-center">
-                <h1>You are already Login.!!!</h1>
+            <div>
+                <div  class="d-flex justify-content-center">
+                    <h1>You are already Login.!!!</h1>
+                </div>
+                <div  class="d-flex justify-content-center">
+                    <h2>You can update your products!!!</h2>
+                </div>
             </div>
-            <div  class="d-flex justify-content-center">
-                <h2>You can update your products!!!</h2>
-            </div>
-        </div>
         @else
-        <div class="d-flex justify-content-center">
-            <h1>Please Login!!!</h1>
-        </div>
+            <div>
+                <div  class="d-flex justify-content-center">
+                    <h1>If you have already account, Login Please!</h1>
+                </div>
+                <div  class="d-flex justify-content-center">
+                    <h1>If you don't have, register first!</h1>
+                </div>
+            </div>
         @endif
     </div>
 </div>

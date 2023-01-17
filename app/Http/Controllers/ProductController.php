@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -40,13 +39,16 @@ class ProductController extends Controller
         //         ->paginate(1);
 
         // }
-        if (auth()->user()->is_admin == 1) {
+        if (!auth()->user()){
+            return view('home');
+        }
+        elseif(auth()->user()->is_admin == 1) {
             $query = Product::latest();
-        }else {
+        }
+        else {
          $query =  Auth::user()->products()->latest();
         }
-        $query
-        ->when(request('search'),function($q) use($request){
+        $query->when(request('search'),function($q) use($request){
                $q->whereHas('category',function($query){
                     $query->where('category_name','LIKE','%'.request('search').'%')
                             ->orWhere('product_name','LIKE','%'.request('search').'%');
