@@ -5,20 +5,16 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Product as ResourcesProduct;
 use App\Models\Product;
-use Exception;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\Validator;
 
-class ProductController extends Controller
+class ProductController extends ApiBaseController
 {
     public function index()
     {
-       $products=Product::orderBy('created_at','desc')->get();
-       return response()->json([
-            "status" => true,
-            "message"=>"Success",
-            "data"=>ResourcesProduct::collection($products),
-       ],200);
-
+       $data=Product::orderBy('created_at','desc')->get();
+       return $this->sendResponse(ResourcesProduct::collection($data),200);
     }
 
     public function store(Request $request)
@@ -40,33 +36,33 @@ class ProductController extends Controller
             'user_id'=>$request->user_id,
             'category_id'=>$request->category_id,
             'detail'=>$request->detail,
-            'image'=>$fileNameToStore,
+            'image'=>$fileNameToStore ?? null,
         ];
 
-        $product= Product::create($input);
+        $validator = Validator::make($input, [
+            'product_name' => 'required',
+            'category_id'=>'required|integer',
+            'user_id' => 'required',
+            'detail' => 'required',
+        ]);
 
-        return response()->json([
-            "status"=>true,
-            "message"=>"Success",
-            "data"=>new ResourcesProduct($product)
-        ],201);
+        if($validator->fails()){
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+
+        $data= Product::create($input);
+
+        return $this->sendResponse(new ResourcesProduct($data),201);
     }
 
     public function show($id)
     {
         try{
-            $product=Product::find($id);
-            return response()->json([
-                "status"=>true,
-                "message"=>"Success",
-                "data"=>new ResourcesProduct($product),
-            ],202);
+            $data=Product::find($id);
+            return $this->sendResponse(new ResourcesProduct($data),202);
         }
         catch(Exception $e){
-            return response()->json([
-                "status"=>false,
-                "message"=>$e->getMessage(),
-            ],202);
+            return $this->runTimeError($e->getMessage());
         }
 
     }
@@ -75,6 +71,7 @@ class ProductController extends Controller
     {
 
         try{
+
             if ($request->hasFile('image')) {
                 $filenameWithExt = $request->file('image')->getClientOriginalName();
                 // Get Filename
@@ -92,22 +89,25 @@ class ProductController extends Controller
                 'user_id'=>$request->user_id,
                 'category_id'=>$request->category_id,
                 'detail'=>$request->detail,
-                'image'=>$fileNameToStore ,
+                'image'=>$fileNameToStore ?? null ,
             ];
-            $product=Product::findOrFail($id);
-            $product->update($input);
 
-            return response()->json([
-                "status"=>true,
-                "message"=>"Success",
-                "data"=>new ResourcesProduct($product),
-            ],202);
+            $validator = Validator::make($input, [
+                'product_name' => 'required',
+                'category_id'=>'required|integer',
+                'user_id' => 'required',
+                'detail' => 'required',
+            ]);
+
+            $data=Product::findOrFail($id);
+            $data->update($input);
+
+            return response()->json(new ResourcesProduct($data),200);
+
+
         }
         catch(Exception $e){
-            return response()->json([
-                "status"=>false,
-                "message"=>$e->getMessage(),
-            ],202);
+            return $this->runTimeError($e->getMessage());
         }
 
     }
@@ -117,18 +117,11 @@ class ProductController extends Controller
         try{
             $product=Product::findOrFail($id);
             $product->delete();
-            return response()->json([
-                "status"=>true,
-                "message"=>"Success Delete"
-            ],202);
+            return $this->sendResponse(null,202);
         }
         catch(\Exception $e){
-            return response()->json([
-                "status"=>false,
-                "message"=>$e->getMessage(),
-            ],202);
+            return $this->runTimeError($e->getMessage());
         }
 
     }
-
 }

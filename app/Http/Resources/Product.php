@@ -20,8 +20,8 @@ class Product extends JsonResource
             'category_name'=>$this->category->category_name ?? null,
             'user'=>$this->user->name ?? null,
             'detail'=>$this->detail,
-            'created_at'=>$this->created_at,
-            'updated_at'=>$this->updated_at,
+            'created_at'=>$this->created_at->format('Y-m-d'),
+            'updated_at'=>$this->updated_at->format('Y-m-d'),
             'image'=>$this->image,
 
         ];
