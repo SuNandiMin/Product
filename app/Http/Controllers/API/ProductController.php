@@ -13,8 +13,9 @@ class ProductController extends ApiBaseController
 {
     public function index()
     {
-       $data=Product::orderBy('created_at','desc')->get();
-       return $this->sendResponse(ResourcesProduct::collection($data),200);
+       $data=Product::orderBy('created_at','desc')->paginate(4);
+       //return new ProductCollection($data);
+       return $this->sendResponse( ResourcesProduct::collection($data)->response()->getData(true),200);
     }
 
     public function store(Request $request)
