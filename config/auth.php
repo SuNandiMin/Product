@@ -43,7 +43,7 @@ return [
 
         'api'=>[
             'driver'=>'passport',
-            'proider'=>'users',
+            'provider'=>'users',
         ],
     ],
 
