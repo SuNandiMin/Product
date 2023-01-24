@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\register\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,7 @@ class RegisterController extends ApiBaseController
         return $this->sendResponse($success,200);
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' =>$request->password])) {
 
