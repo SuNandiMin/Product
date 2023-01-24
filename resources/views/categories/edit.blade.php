@@ -4,24 +4,14 @@
 
 <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+            <div class="d-flex justify-content-start">
                 <h2>Edit Category</h2>
             </div>
-            <div class="justify-content-end">
+            <div class="d-flex justify-content-end mt-3">
                 <a class="btn btn-outline-secondary btn-sm " href="{{ route('categories.index') }}"> Back</a>
             </div>
         </div>
     </div>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
     <form action="{{ route('categories.update',$category->id) }}" method="POST">
         @csrf
@@ -32,6 +22,9 @@
                 <div class="form-group">
                     <strong>Category Name:</strong>
                     <input type="text" name="category_name" value="{{ $category->category_name }}" class="form-control" placeholder="Name">
+                    @if($errors->has('category_name'))
+                        <p>{{ $errors->first('category_name') }}</p>
+                    @endif
                 </div>
             </div>
         </div>

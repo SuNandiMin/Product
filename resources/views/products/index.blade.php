@@ -8,9 +8,9 @@
                 <a href="{{route('products.index')}}" class="btn btn-primary">Products</a>
                 </h2>
             </div>
-            <div class="d-flex justify-content-start">
+            {{-- <div class="d-flex justify-content-start">
                 <a class="btn btn-outline-secondary " href="{{ url('/') }}">Home</a>
-            </div>
+            </div> --}}
             <div class="d-flex justify-content-end">
                 <form action="" class="">
                     <div class="input-group">
@@ -22,7 +22,6 @@
             <div class="justify-content-start mb-2">
                 <div class="mt-2 mb-2 ml-3">
                     <a class="btn btn-secondary btn-sm" href="{{ route('products.create') }}"> Create New Product</a>
-                    <a class="btn btn-secondary btn-sm" href="{{ route('categories.create') }}"> Create New Category</a>
                 </div>
             </div>
         </div>

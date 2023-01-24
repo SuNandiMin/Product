@@ -52,6 +52,7 @@ class LoginController extends Controller
         if (auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password'])))
         {
             return view('home');
+            //return redirect()->route('products.index');
         }
         else{
             return redirect()->route('login')

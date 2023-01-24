@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\dashboard\product\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -77,17 +79,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-
-
-        $request->validate([
-            'category'=>'required|integer',
-            'product_name' => 'required',
-            'detail' => 'required',
-            'image'=>'required',
-        ]);
-
         if ($request->hasFile('image')) {
             $filenameWithExt = $request->file('image')->getClientOriginalName();
             // Get Filename
@@ -99,7 +92,7 @@ class ProductController extends Controller
             // Upload Image
             $request->file('image')->move(public_path('images'), $fileNameToStore);
             }
-            //dd($fileNameToStore);
+
             Product::create([
                 'category_id'=>$request->category,
                 'product_name'=>$request->product_name,
@@ -107,11 +100,6 @@ class ProductController extends Controller
                 'image'=> $fileNameToStore,
                 'user_id'=>Auth::user()->id,
             ]);
-
-        // $imageName = time().'.'.$request->image->extension();
-        // $request->image->move(public_path('images'), $imageName);
-
-
 
         return redirect()->route('products.index')
                         ->with('success','Product created successfully.');
@@ -147,15 +135,8 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $product_id)
+    public function update(ProductRequest $request, $product_id)
     {
-        $request->validate([
-            'category'=>'required|integer',
-            'product_name' => 'required',
-            'detail' => 'required',
-            'image'=>'required',
-        ]);
-
         if ($request->hasFile('image')) {
             $filenameWithExt = $request->file('image')->getClientOriginalName();
             // Get Filename

@@ -9,10 +9,10 @@
             Categories
             </a>
         </div>
-        <div class="d-flex justify-content-start ">
-                <a class="btn btn-outline-secondary btn-sm " href="{{ route('products.index') }}">Product</a>
+        <div class="d-flex justify-content-end ">
+                <a class="btn btn-outline-secondary btn-sm " href="{{ route('products.index') }}">Back</a>
         </div>
-        <div class="d-flex justify-content-end  ">
+        <div class="d-flex justify-content-start  ">
             <a class="btn btn-secondary btn-sm " href="{{ route('categories.create') }}"> Create New Category</a>
         </div>
 
