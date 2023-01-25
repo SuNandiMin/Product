@@ -7,9 +7,11 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\UserTrait;
 
 class ProductController extends Controller
 {
+    use UserTrait;
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +19,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-
         // $categories= Category::all();
         // if (auth()->user()->is_admin == 1) {
         //     $products=Product::latest()
@@ -44,12 +45,13 @@ class ProductController extends Controller
         if (!auth()->user()){
             return view('home');
         }
-        elseif(auth()->user()->is_admin == 1) {
+        elseif($this->isAdmin()) {
             $query = Product::latest();
         }
         else {
          $query =  Auth::user()->products()->latest();
         }
+
         $query->when(request('search'),function($q) use($request){
                $q->whereHas('category',function($query){
                     $query->where('category_name','LIKE','%'.request('search').'%')
@@ -81,25 +83,18 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        if ($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            // Get Filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just Extension
-            $extension = $request->file('image')->getClientOriginalExtension();
-            // Filename To store
-            $fileNameToStore = $filename. '.'. time().'.'.$extension;
-            // Upload Image
-            $request->file('image')->move(public_path('images'), $fileNameToStore);
-            }
+        if ($request->hasFile('image'))
+        {
+              $fileNameToStore=imageUpload($request->file('image'));
+        }
 
-            Product::create([
-                'category_id'=>$request->category,
-                'product_name'=>$request->product_name,
-                'detail'=>$request->detail,
-                'image'=> $fileNameToStore,
-                'user_id'=>Auth::user()->id,
-            ]);
+        Product::create([
+            'category_id'=>$request->category,
+            'product_name'=>$request->product_name,
+            'detail'=>$request->detail,
+            'image'=> $fileNameToStore ?? null,
+            'user_id'=>Auth::user()->id,
+        ]);
 
         return redirect()->route('products.index')
                         ->with('success','Product created successfully.');
@@ -137,23 +132,16 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $product_id)
     {
-        if ($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            // Get Filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just Extension
-            $extension = $request->file('image')->getClientOriginalExtension();
-            // Filename To store
-            $fileNameToStore = $filename. '.'. time().'.'.$extension;
-            // Upload Image
-            $request->file('image')->move(public_path('images'), $fileNameToStore);
-            }
+        if ($request->hasFile('image'))
+        {
+            $fileNameToStore = imageUpload($request->file('image'));
+        }
 
 
         Product::find($product_id)->update([
             'product_name'=>$request->product_name,
             'detail'=>$request->detail,
-            'image'=> $fileNameToStore,
+            'image'=> $fileNameToStore ?? null,
             'category_id'=>$request->category
         ]);
 
@@ -174,4 +162,5 @@ class ProductController extends Controller
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully');
     }
+
 }

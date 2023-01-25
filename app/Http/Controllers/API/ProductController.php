@@ -21,15 +21,7 @@ class ProductController extends ApiBaseController
     public function store(Request $request)
     {
         if ($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            // Get Filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just Extension
-            $extension = $request->file('image')->getClientOriginalExtension();
-            // Filename To store
-            $fileNameToStore = $filename. '.'. time().'.'.$extension;
-            // Upload Image
-            $request->file('image')->move(public_path('images'), $fileNameToStore);
+            $fileNameToStore=imageUpload($request->file('image'));
         }
 
         $input=[
@@ -74,20 +66,12 @@ class ProductController extends ApiBaseController
         try{
 
             if ($request->hasFile('image')) {
-                $filenameWithExt = $request->file('image')->getClientOriginalName();
-                // Get Filename
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                // Get just Extension
-                $extension = $request->file('image')->getClientOriginalExtension();
-                // Filename To store
-                $fileNameToStore = $filename. '.'. time().'.'.$extension;
-                // Upload Image
-                $request->file('image')->move(public_path('images'), $fileNameToStore);
+                $fileNameToStore=imageUpload($request->file('image'));
             }
 
             $input=[
                 'product_name'=>$request->name,
-                'user_id'=>$request->user_id,
+                // 'user_id'=>$request->Auth::user(),
                 'category_id'=>$request->category_id,
                 'detail'=>$request->detail,
                 'image'=>$fileNameToStore ?? null ,

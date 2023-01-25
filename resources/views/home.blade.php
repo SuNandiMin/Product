@@ -22,7 +22,7 @@
         </div>
     </div> --}}
     <div>
-        @if (auth()->user() && auth()->user()->is_admin==1 )
+        @if (auth()->user() && auth()->user()->is_admin==1)
             <div>
                 <div  class="d-flex justify-content-center">
                     <h1>You are already Login.!!!</h1>
