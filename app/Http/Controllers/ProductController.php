@@ -19,31 +19,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        // $categories= Category::all();
-        // if (auth()->user()->is_admin == 1) {
-        //     $products=Product::latest()
-        //         ->when(request('search'),function($p) use($request){
-        //              $p->where('product_name','LIKE','%'.$request->search.'%')
-        //         ->orWhereHas('category',function($p){
-        //              $p->where('category_name','LIKE','%'.request('search').'%');
-        //             });
-        //         })
-        //         ->paginate(5);
-
-        //     // ->with('i', (request()->input('page', 1) - 1) * 5);
-        // }else {
-        //  $products =  Auth::user()->products()
-        //     ->when(request('search'),function($p) use($request){
-        //             $p->where('product_name','LIKE','%'.$request->search.'%')
-        //             ->orWhereHas('category',function($p){
-        //             $p->where('category_name','LIKE','%'.request('search').'%');
-        //             });
-        //         })
-        //         ->paginate(1);
-
-        // }
         if (!auth()->user()){
-            return view('home');
+            $products=Product::all();
+            return view('frontend.shop',compact('products'));
         }
         elseif($this->isAdmin()) {
             $query = Product::latest();
@@ -55,13 +33,13 @@ class ProductController extends Controller
         $query->when(request('search'),function($q) use($request){
                $q->whereHas('category',function($query){
                     $query->where('category_name','LIKE','%'.request('search').'%')
-                            ->orWhere('product_name','LIKE','%'.request('search').'%');
+                            ->orWhere('name','LIKE','%'.request('search').'%');
              });
 
         });
-
        $products= $query->paginate(5);
-        return view('products.index',compact('products'));
+       return view('products.index',compact('products'));
+
     }
 
     /**
@@ -90,9 +68,11 @@ class ProductController extends Controller
 
         Product::create([
             'category_id'=>$request->category,
-            'product_name'=>$request->product_name,
+            'name'=>$request->name,
             'detail'=>$request->detail,
             'image'=> $fileNameToStore ?? null,
+            'price'=>$request->price,
+            'quantity'=>$request->quantity,
             'user_id'=>Auth::user()->id,
         ]);
 
@@ -108,7 +88,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show',compact('product'));
+        // return view('products.show',compact('product'));
+        return view('frontend.single-product',compact('product'));
     }
 
     /**
@@ -139,7 +120,7 @@ class ProductController extends Controller
 
 
         Product::find($product_id)->update([
-            'product_name'=>$request->product_name,
+            'name'=>$request->name,
             'detail'=>$request->detail,
             'image'=> $fileNameToStore ?? null,
             'category_id'=>$request->category

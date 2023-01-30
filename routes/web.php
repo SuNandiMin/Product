@@ -15,14 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 // Route::get('p', [ProductController::class, 'index'])->name("p");
 
 Route::resource('products',ProductController::class);
 Route::resource('categories',CategoryController::class);
+
+Route::get('/',function(){
+    return view('frontend.index');
+});
+
+// Route::get('/blog',function(){
+//     return view('frontend.blog');
+// });
+
+Route::get('single-product/{product}','ProductController@show');
+
+// Route::get('shop',function(){
+//     return view('frontend.shop');
+// });
+
+Route::get('shop','ProductController@index');
 
 //Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
 // Route::get('/products/image',[ProductController::class,'create'] );

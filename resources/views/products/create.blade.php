@@ -20,9 +20,29 @@
         <div class="col-xs-12 col-sm-12 col-md-12 ">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="product_name" class="form-control" placeholder="Name">
-                @if($errors->has('product_name'))
-                    <p>{{ $errors->first('product_name') }}</p>
+                <input type="text" name="name" class="form-control" placeholder="Name">
+                @if($errors->has('name'))
+                    <p>{{ $errors->first('name') }}</p>
+                @endif
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
+            <div class="form-group">
+                <strong>Price:</strong>
+                <input type="text" name="price" class="form-control" placeholder="Price">
+                @if($errors->has('price'))
+                    <p>{{ $errors->first('price') }}</p>
+                @endif
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
+            <div class="form-group">
+                <strong>Quantity:</strong>
+                <input type="number" id="qty" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric">
+                @if($errors->has('quantity'))
+                    <p>{{ $errors->first('quantity') }}</p>
                 @endif
             </div>
         </div>

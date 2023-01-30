@@ -25,7 +25,7 @@ class ProductController extends ApiBaseController
         }
 
         $input=[
-            'product_name'=>$request->name,
+            'name'=>$request->name,
             'user_id'=>$request->user_id,
             'category_id'=>$request->category_id,
             'detail'=>$request->detail,
@@ -33,7 +33,7 @@ class ProductController extends ApiBaseController
         ];
 
         $validator = Validator::make($input, [
-            'product_name' => 'required',
+            'name' => 'required',
             'category_id'=>'required|integer',
             'user_id' => 'required',
             'detail' => 'required',
@@ -70,7 +70,7 @@ class ProductController extends ApiBaseController
             }
 
             $input=[
-                'product_name'=>$request->name,
+                'name'=>$request->name,
                 // 'user_id'=>$request->Auth::user(),
                 'category_id'=>$request->category_id,
                 'detail'=>$request->detail,
@@ -78,7 +78,7 @@ class ProductController extends ApiBaseController
             ];
 
             $validator = Validator::make($input, [
-                'product_name' => 'required',
+                'name' => 'required',
                 'category_id'=>'required|integer',
                 'user_id' => 'required',
                 'detail' => 'required',
