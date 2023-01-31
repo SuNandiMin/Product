@@ -22,44 +22,7 @@
                     </div>
                 </div><!--content-box-->
 
-
             </div><!--slider-item-->
-
-            {{-- <div class="slider-item">
-
-                <figure>
-                    <img src="frontend/images/banner2.jpg">
-                </figure>
-
-                <div class="text-content col-md-8">
-                    <span>- FRESHLY BAKED EVERY MORNING</span>
-                    <h2 class="text-uppercase colored padding-xsmall"><a href="">Enjoy with these cakes</a></h2>
-                    <p>A gorgeous selection of our favorites for a client to send as a new year’s gift.A gorgeous selection of our favorites for a client to send as a new year’s gift</p>
-                    <div class="pix_btn">
-                        <a href="#" class="btn-hvr-effects mt-3">Shop Now</a>
-                    </div>
-                </div><!--content-box-->
-
-
-            </div><!--slider-item-->
-
-            <div class="slider-item">
-
-                <figure>
-                    <img src="frontend/images/banner1.jpg">
-                </figure>
-
-                <div class="text-content col-md-8">
-                    <span>- FRESHLY BAKED EVERY MORNING</span>
-                    <h2 class="text-uppercase colored padding-xsmall"><a href="">delicious cupcakes for you</a></h2>
-                    <p>A gorgeous selection of our favorites for a client to send as a new year’s gift.A gorgeous selection of our favorites for a client to send as a new year’s gift</p>
-                    <div class="pix_btn">
-                        <a href="#" class="btn-hvr-effects mt-3">Shop Now</a>
-                    </div>
-                </div><!--content-box-->
-
-
-            </div><!--slider-item--> --}}
 
         </div><!--slider-->
 
@@ -206,91 +169,6 @@
             </div>
         </div>
     </section>
-
-
-    <section class="special-items mb-5">
-        <div class="item-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 color-white">
-                    <h2 class="section-title color-white mb-4">
-                        Our Special Chocolate Mousse
-                    </h2>
-                    <p>All of our products are made from scratch using family recipes with the highest quality ingredients. We bake and sell fresh daily to ensure only the best products are sold to our customers.</p>
-
-                <div class="pix_btn mt-4">
-                    <a class="btn btn-outline-light">
-                        <span>Shop Now</span>
-                    </a>
-                </div>
-                </div><!--item-content-->
-            </div>
-        </div>
-        </div>
-    </section>
-
-
-    <section class="gallery-wrap margin-medium">
-        <div class="container">
-            <h2 class="section-title mb-5 text-center">View Our Gallery</h2>
-            <div class="row">
-                <div class="d-flex flex-wrap col-md-12">
-                    <figure class="col-md-4 mb-3 pl-0">
-                        <a class="magnific-popup" href="frontend/images/blackforest.jpg">
-                            <img src="frontend/images/blackforest.jpg" alt="cake" class="galleryImg">
-                            <div class="overlay">
-                                <i class="icon icon-search-plus"></i>
-                            </div><!--imgOverlay-->
-                        </a>
-                    </figure>
-                    <figure class="col-md-4 mb-3 pl-0">
-                        <a class="magnific-popup" href="frontend/images/macarons.jpg">
-                            <img src="frontend/images/macarons.jpg" alt="cake" class="galleryImg">
-                            <div class="overlay">
-                                <i class="icon icon-search-plus"></i>
-                            </div><!--imgOverlay-->
-                        </a>
-                    </figure>
-                    <figure class="col-md-4 mb-3 pl-0">
-                        <a class="magnific-popup" href="frontend/images/blackforest.jpg">
-                            <img src="frontend/images/blackforest.jpg" alt="cake" class="galleryImg">
-                            <div class="overlay">
-                                <i class="icon icon-search-plus"></i>
-                            </div><!--imgOverlay-->
-                        </a>
-                    </figure>
-                    <figure class="col-md-4 mb-3 pl-0">
-                        <a class="magnific-popup" href="frontend/images/cakeitem.jpg">
-                            <img src="frontend/images/blackforest.jpg" alt="cake" class="galleryImg">
-                            <div class="overlay">
-                                <i class="icon icon-search-plus"></i>
-                            </div><!--imgOverlay-->
-                        </a>
-                    </figure>
-                    <figure class="col-md-4 mb-3 pl-0">
-                        <a class="magnific-popup" href="frontend/images/macarons.jpg">
-                            <img src="frontend/images/macarons.jpg" alt="cake" class="galleryImg">
-                            <div class="overlay">
-                                <i class="icon icon-search-plus"></i>
-                            </div><!--imgOverlay-->
-                        </a>
-                    </figure>
-                    <figure class="col-md-4 mb-3 pl-0">
-                        <a class="magnific-popup" href="frontend/images/sprinkleddonuts.jpg">
-                            <img src="frontend/images/sprinkleddonuts.jpg" alt="cake" class="galleryImg">
-                            <div class="overlay">
-                                <i class="icon icon-search-plus"></i>
-                            </div><!--imgOverlay-->
-                        </a>
-                    </figure>
-                </div><!--content-->
-                <div class="pix_btn text-center m-auto">
-                    <a href="#" class="btn-hvr-effects mt-3">View All</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <section class="testimonials-wrap padding-medium">
         <div class="container">

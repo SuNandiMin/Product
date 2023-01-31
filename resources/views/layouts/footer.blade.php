@@ -4,7 +4,7 @@
             <div class="wrap flex-container">
 
             <div class="col-md-3 footer-logo text-center mb-3">
-                <img src="frontend/images/main-logo.png" class="mb-3">
+                <img src="{{ asset('frontend/images/main-logo.png') }}" class="mb-3">
                 <p>Bakery is a free HTML CSS Template by Templates Jungle specially crafted for Bakeries.</p>
             </div>
 
@@ -63,9 +63,9 @@
             </div>
             <div class="payment-card">
                 <span>We Accept:</span>
-                <img src="frontend/images/visa.png" class="cardImg">
-                <img src="frontend/images/american-express.png" class="cardImg">
-                <img src="frontend/images/master-card.png" class="cardImg">
+                <img src="{{ asset('frontend/images/visa.png') }}" class="cardImg">
+                <img src="{{ asset('frontend/images/american-express.png') }}" class="cardImg">
+                <img src="{{ asset('frontend/images/master-card.png') }}" class="cardImg">
             </div>
         </div>
     </div>

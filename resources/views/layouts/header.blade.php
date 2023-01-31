@@ -9,7 +9,7 @@
 
                     <div class="navbar-brand">
                         <a href="cake">
-                            <img src="frontend/images/main-logo.png" alt="logo">
+                            <img src="{{ asset('frontend/images/main-logo.png') }}" alt="logo">
                         </a>
                     </div>
 

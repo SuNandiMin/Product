@@ -2,11 +2,11 @@
 
 @section('content')
 
-<div class="site-banner">
-	<div class="banner-content container colored">
-        <h1>Shop</h1>
-	</div>
-</div><!--site-banner-->
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
 
 <section class="our-team bg-sand padding-large">
 	<div class="container">
