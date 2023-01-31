@@ -38,6 +38,8 @@
             <th>No</th>
             <th>Id</th>
             <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
             <th>Details</th>
             <th>Category</th>
             <th>Owner</th>
@@ -48,7 +50,9 @@
         <tr>
             <td>{{++$key}}</td>
             <td>{{$product->id}}</td>
-            <td>{{ $product->product_name }}</td>
+            <td>{{ $product->name }}</td>
+            <td>{{ $product->price }}</td>
+            <td>{{ $product->quantity }}</td>
             <td>{{ $product->detail }}</td>
             <td>{{$product->category->category_name ?? 'Plz choose category' }}</td>
             <td>{{ $product->user->name ?? 'This item doesn\'t have'}}</td>

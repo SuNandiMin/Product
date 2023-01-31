@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register','API\RegisterController@register');
 Route::post('login','API\RegisterController@login');
 
-Route::middleware('auth:api')->group( function () {
-    Route::resource('products', 'API\ProductController');
+Route::group(['middleware'=>'auth:api','namespace'=>'API'],function () {
+    Route::resource('products', 'ProductController');
 });
 
 // Route::resource('products', 'API\ProductController');

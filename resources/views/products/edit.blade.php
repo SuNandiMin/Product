@@ -20,9 +20,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="product_name" value="{{ $product->product_name }}" class="form-control" placeholder="Name">
-                    @if($errors->has('product_name'))
-                        <p>{{ $errors->first('product_name') }}</p>
+                    <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Name">
+                    @if($errors->has('name'))
+                        <p>{{ $errors->first('name') }}</p>
                     @endif
                 </div>
             </div>
