@@ -20,8 +20,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if (!auth()->user()){
-            $products=Product::all();
-            return view('frontend.shop',compact('products'));
+            // $products=Product::all();
+            // return view('frontend.shop',compact('products'));
         }
         elseif($this->isAdmin()) {
             $query = Product::latest();
@@ -88,8 +88,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // return view('products.show',compact('product'));
-        return view('frontend.single-product',compact('product'));
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -113,6 +112,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $product_id)
     {
+        // dd($request);
         if ($request->hasFile('image'))
         {
             $fileNameToStore = imageUpload($request->file('image'));
@@ -123,7 +123,7 @@ class ProductController extends Controller
             'name'=>$request->name,
             'detail'=>$request->detail,
             'image'=> $fileNameToStore ?? null,
-            'category_id'=>$request->category
+            'category_id'=>$request->category,
         ]);
 
         return redirect()->route('products.index')

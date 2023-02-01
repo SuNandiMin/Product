@@ -7,9 +7,12 @@ use App\Http\Requests\order\OrderRequest;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Traits\UserTrait;
 
 class OrderController extends Controller
 {
+    use UserTrait;
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +20,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders=Order::all();
-        return view('orders.index',compact('orders'));
+        if (Auth::user() && $this->isAdmin()) {
+            $orders=Order::latest()->get();
+            return view('orders.index',compact('orders'));
+        }
+            return abort(404);
     }
 
     /**
@@ -44,7 +50,7 @@ class OrderController extends Controller
             'product_name'=>$product->name,
             'price'=>$product->price,
             'quantity'=>$request->quantity,
-            'customer_name'=>$request->customer_name,
+            'customer_name'=>Auth::user()->id ?? 'Working Customer',
             'total_cost'=>$product->price*$request->quantity,
             'delivery_date'=>$request->delivery_date,
             'address'=>$request->address,

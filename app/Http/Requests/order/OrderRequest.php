@@ -24,7 +24,7 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_name'=>'required',
+            //'customer_name'=>'required',
             'address'=>'required',
             'quantity'=>'required|integer',
             'delivery_date'=>'required',

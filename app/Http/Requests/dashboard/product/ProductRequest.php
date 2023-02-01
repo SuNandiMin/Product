@@ -29,18 +29,8 @@ class ProductRequest extends FormRequest
             'category'=>'required|integer',
             'name' => 'required',
             'detail' => 'required',
-            'image'=>'required',
+            // 'image'=>'required',
             'price'=>'required',
         ];
     }
-
-    // public function failedValidation(Validator $validator)
-    // {
-    //     throw new HttpResponseException(response()
-    //     ->json([
-    //         "success"=>false,
-    //         "message"=>"Validation Error:",
-    //         "data"=>$validator->errors(),
-    //     ],400));
-    // }
 }

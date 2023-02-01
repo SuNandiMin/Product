@@ -27,17 +27,20 @@ Route::get('/',function(){
     return view('frontend.index');
 });
 
+Auth::routes();
+
 Route::resource('products',ProductController::class);
 Route::resource('categories',CategoryController::class);
-
-// Route::resource('orders',OrderController::class);
 
 // Route::get('/blog',function(){
 //     return view('frontend.blog');
 // });
 
-Route::get('single-product/{product}','ProductController@show');
+Route::get('shop','Frontend\ProductController@shop')->name('shop');
 
+Route::get('single-product/{product}','Frontend\ProductController@singleProduct');
+
+Route::get('orders','Frontend\OrderController@index');
 Route::post('orders/{product}','Frontend\OrderController@order');
 
 // Route::get('order_lists','Frontend\OrderController@index')->name('order_lists');
@@ -46,7 +49,7 @@ Route::post('orders/{product}','Frontend\OrderController@order');
 //     return view('frontend.shop');
 // });
 
-Route::get('shop','ProductController@index')->name('shop');
+
 
 //Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
 // Route::get('/products/image',[ProductController::class,'create'] );
@@ -55,7 +58,7 @@ Route::get('shop','ProductController@index')->name('shop');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+
 // Route::get('/products/index', [App\Http\Controllers\HomeController::class, 'index']);
 
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');

@@ -28,6 +28,9 @@
                     <a href="{{ url('/categories') }}" class="navbar-brand">
                         Category
                     </a>
+                    <a class="navbar-brand" href="{{ url('/orders') }}">
+                        Orders
+                    </a>
                 @elseif (auth()->user())
                     <a class="navbar-brand" href="{{ url('/products') }}">
                         {{-- {{ config('app.name', 'Laravel') }} --}}

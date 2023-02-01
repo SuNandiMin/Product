@@ -9,11 +9,10 @@
     @endif
 
     <table class="table table-bordered">
-
-    <h1>Hello!!!!!!!</h1>
         <tr>
             <th>No</th>
             <th>Id</th>
+            <th>Product Name</th>
             <th>Customer Name</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -23,8 +22,9 @@
         @foreach ($orders as $key=>$order)
         <tr>
             <td>{{++$key}}</td>
-            <td>{{$order->id}}</td>
-            <td>{{ $order->name}}</td>
+            <td>Ord-{{$order->id}}</td>
+            <td>{{ $order->product_name }}</td>
+            <td>{{ $order->customer_name}}</td>
             <td>{{ $order->price}}</td>
             <td>{{ $order->quantity }}</td>
             <td>{{$order->total_cost}}</td>

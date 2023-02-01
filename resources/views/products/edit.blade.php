@@ -17,6 +17,7 @@
         @method('PUT')
 
         <div class="row">
+
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
@@ -39,6 +40,16 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
                 <div class="form-group">
+                    <strong>Price:</strong>
+                    <input type="text" name="price" value="{{ $product->price }}" class="form-control" placeholder="Price">
+                    @if($errors->has('price'))
+                        <p>{{ $errors->first('price') }}</p>
+                    @endif
+                </div>
+            </div>
+
+            {{-- <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
+                <div class="form-group">
                     <strong>Image:</strong>
                         <div class="col-md-6">
                             <input type="file" name="image" class="form-control">
@@ -47,7 +58,7 @@
                             @endif
                         </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
                 <div class="from-group">
