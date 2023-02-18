@@ -36,10 +36,12 @@
     @include("layouts.footer")
 
     <script src="{{ asset('frontend/js/jquery-1.11.0.min.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/slick.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/script.js') }}"></script>
+    @stack('scripts')
 
 </body>
 

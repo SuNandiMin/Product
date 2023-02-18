@@ -20,7 +20,8 @@
                     <div class="navbar-collapse collapse" id="slide-navbar-collapse">
                         <ul class="navbar-nav list-inline text-uppercase">
                             <li class="nav-item text-hover"><a href="{{ url ('/') }}" class="nav-link" data-effect="Home">Home</a></li>
-                            <li class="nav-item text-hover"><a href="{{ url ('/shop') }}" class="nav-link" data-effect="Shop">Shop</a></li>
+                            <li class="nav-item text-hover"><a href="{{ url ('shop') }}" class="nav-link" data-effect="Shop">Shop</a></li>
+                            <li class="nav-item text-hover"><a href="{{ route('cart') }}" class="nav-link" data-effect="">Cart</a></li>
                             <li class="nav-item text-hover"><a href="frontend.about" class="nav-link" data-effect="About Us">About us</a></li>
                             <li class="nav-item text-hover"><a href="frontend.contact" class="nav-link" data-effect="Contact">Contact us</a></li>
 

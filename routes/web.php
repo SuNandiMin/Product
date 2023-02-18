@@ -16,13 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-// Route::get('p', [ProductController::class, 'index'])->name("p");
-
-
 Route::get('/',function(){
     return view('frontend.index');
 });
@@ -32,33 +25,20 @@ Auth::routes();
 Route::resource('products',ProductController::class);
 Route::resource('categories',CategoryController::class);
 
-// Route::get('/blog',function(){
-//     return view('frontend.blog');
-// });
-
 Route::get('shop','Frontend\ProductController@shop')->name('shop');
 
-Route::get('single-product/{product}','Frontend\ProductController@singleProduct');
-
-Route::get('orders','Frontend\OrderController@index');
+Route::get('orders','Frontend\OrderController@index')->name('orders');
+Route::get('single-product/{product}','Frontend\OrderController@create');
 Route::post('orders/{product}','Frontend\OrderController@order');
+Route::delete('orders/{order}','Frontend\OrderController@destroy');
 
-// Route::get('order_lists','Frontend\OrderController@index')->name('order_lists');
+Route::get('order-items/{id}','Frontend\OrderController@showOrderItem');
 
-// Route::get('shop',function(){
-//     return view('frontend.shop');
-// });
+Route::get('cartOrder','Frontend\OrderController@cartOrder')->name('cartOrder');
 
-
-
-//Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
-// Route::get('/products/image',[ProductController::class,'create'] );
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-// Route::get('/products/index', [App\Http\Controllers\HomeController::class, 'index']);
-
+Route::get('cart','Frontend\ProductController@cart')->name('cart');
+Route::get('add-to-cart/{id}','Frontend\ProductController@addToCart')->name('add.to.cart');
+Route::get('updateQty','Frontend\ProductController@cartUpdate');
+Route::get('remove-cart/{id}','Frontend\ProductController@cartRemove')->name('remove.cart');
+// Route::post('cart/{product}','Frontend\OrderController@cart');
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');

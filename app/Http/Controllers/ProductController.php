@@ -112,15 +112,15 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $product_id)
     {
-        // dd($request);
         if ($request->hasFile('image'))
         {
             $fileNameToStore = imageUpload($request->file('image'));
         }
 
-
         Product::find($product_id)->update([
             'name'=>$request->name,
+            'price'=>$request->price,
+            'quantity'=>$request->quantity,
             'detail'=>$request->detail,
             'image'=> $fileNameToStore ?? null,
             'category_id'=>$request->category,

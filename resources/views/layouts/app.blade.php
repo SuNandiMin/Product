@@ -20,9 +20,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: rgb(103, 179, 214);">
             <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    HOME
+                </a>
                 @if (auth()->user() && auth()->user()->is_admin==1 )
                     <a class="navbar-brand" href="{{ url('/products') }}">
-                        {{-- {{ config('app.name', 'Laravel') }} --}}
                         Products
                     </a>
                     <a href="{{ url('/categories') }}" class="navbar-brand">
@@ -33,10 +35,10 @@
                     </a>
                 @elseif (auth()->user())
                     <a class="navbar-brand" href="{{ url('/products') }}">
-                        {{-- {{ config('app.name', 'Laravel') }} --}}
                         Products
                     </a>
                 @endif
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

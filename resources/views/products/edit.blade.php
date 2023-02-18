@@ -48,7 +48,17 @@
                 </div>
             </div>
 
-            {{-- <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
+                <div class="form-group">
+                    <strong>Quantity:</strong>
+                    <input type="number" id="qty" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric">
+                    @if($errors->has('quantity'))
+                        <p>{{ $errors->first('quantity') }}</p>
+                    @endif
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
                 <div class="form-group">
                     <strong>Image:</strong>
                         <div class="col-md-6">
@@ -58,7 +68,7 @@
                             @endif
                         </div>
                 </div>
-            </div> --}}
+            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
                 <div class="from-group">
