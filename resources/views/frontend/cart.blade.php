@@ -9,8 +9,9 @@
 @endif --}}
 
 @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible">
         {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
 
@@ -138,11 +139,11 @@
     </div>
 </div>
 
+@else
+    <div class="bg-sand pb-5">
+        <h2 class="p-5 text-center ">!!! Nothing in your cart !!!</h2>
+    </div>
 @endif
-<div class="bg-sand pb-5">
-    <h2 class="p-5 text-center ">!!! Nothing in your cart !!!</h2>
-</div>
-
 <script>
     function updateQuantity(event,id){
         let message= document.getElementById("message");

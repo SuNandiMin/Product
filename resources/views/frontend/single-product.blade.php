@@ -3,20 +3,22 @@
 @section('content')
 
 @if ($message = Session::get('success'))
-<div class="alert alert-success">
+<div class="alert alert-success alert-dismissible">
     <p>{{ $message }}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 <section class="bg-sand padding-large">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-md-3">
-				<a href="#" class="product-image"><img src="/images/{{ $product->image}}"></a>
-                <br>
+				<a href="#" class="" style="width: 14rem; height: 14rem ;"><img src="/images/{{ $product->image}}"></a>
+                <br><br>
                 <a href="{{ route('add.to.cart',$product->id) }}">
-                    <button type="submit" name="add-to-cart" class="button">Add To Cart</button>
+                    <button type="submit" name="add-to-cart" class="btn btn-success btn-lg">
+                        Add <i class="icon icon-shopping-cart"></i>
+                    </button>
                 </a>
             </div>
 
@@ -93,7 +95,7 @@
                         @if($errors->has('quantity'))
                         <p>{{ $errors->first('quantity') }}</p>
                         @endif
-                        <button type="submit" name="order" value="27545" class="button">Order</button>
+                        <button type="submit" name="order" value="27545" class="btn btn-secondary w-25 btn-lg text-dark">Order</button>
                     </form>
 
 				</div>

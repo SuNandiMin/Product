@@ -2,26 +2,28 @@
 <div id="header-wrap">
 
     <header id="header">
-        <div class="container">
+        <div class="container-fluid mt-3">
             <div class="row">
 
                 <nav class="navbar navbar-expand-lg col-md-12">
 
-                    <div class="navbar-brand">
-                        <a href="cake">
-                            <img src="{{ asset('frontend/images/main-logo.png') }}" alt="logo">
-                        </a>
+                    <div class="navbar-brand ms-3">
+                            <h4 style="color:deeppink;">
+                                <i class="fa-solid fa-shop"></i>
+                                <strong>WelcomeToShop</strong>
+                            </h4>
+                            {{-- <img src="{{ asset('frontend/images/main-logo.png') }}" alt="logo"> --}}
                     </div>
 
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#slide-navbar-collapse" aria-controls="slide-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"><i class="icon icon-navicon"></i></span>
                     </button>
 
-                    <div class="navbar-collapse collapse" id="slide-navbar-collapse">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav list-inline text-uppercase">
                             <li class="nav-item text-hover"><a href="{{ url ('/') }}" class="nav-link" data-effect="Home">Home</a></li>
                             <li class="nav-item text-hover"><a href="{{ url ('shop') }}" class="nav-link" data-effect="Shop">Shop</a></li>
-                            <li class="nav-item text-hover"><a href="{{ route('cart') }}" class="nav-link" data-effect="">Cart</a></li>
+                            {{-- <li class="nav-item text-hover"><a href="{{ route('cart') }}" class="nav-link" data-effect="">Cart</a></li> --}}
                             <li class="nav-item text-hover"><a href="frontend.about" class="nav-link" data-effect="About Us">About us</a></li>
                             <li class="nav-item text-hover"><a href="frontend.contact" class="nav-link" data-effect="Contact">Contact us</a></li>
 
@@ -29,6 +31,7 @@
                             <li><a href="single-product.html" class="dropdown-item">Single Product</a></li> --}}
                         </ul>
                     </div>
+
 
                     <div class="action-menu d-flex justify-content-end mr-3">
                         <div class="searchbar">
@@ -40,8 +43,8 @@
                             </form>
                         </div>
                         <div class="shopping-cart">
-                            <a href="#">
-                                <i class="icon icon-shopping-cart"></i>
+                            <a href="{{ route('cart') }}">
+                                <i class="icon icon-shopping-cart"><strong>CART</strong></i>
                             </a>
                         </div>
                     </div><!--action-menu-->

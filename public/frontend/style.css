@@ -291,7 +291,7 @@ ul li, ol li {
   margin-bottom: 0;
   outline: 0;
 }
-ul li.active a{
+/* ul li.active a{
   color: #ce3c83;
 }
 ul li a{
@@ -300,7 +300,7 @@ ul li a{
 ul li a:hover{
   color: #ce3c83;
   text-decoration: none;
-}
+} */
 ul li:last-child,
 ol li:last-child {
   margin-bottom: 0;
@@ -333,12 +333,12 @@ dt {
 dd {
   margin-left: 0;
 }
-button, input, select, textarea {
+/* button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   outline: 0;
-}
+} */
 figure {
   margin: 0;
 }
@@ -1292,7 +1292,7 @@ fieldset[disabled] .checkbox label {
 /*--------------------------------------------------------------
 /** 8. Button Styles
 --------------------------------------------------------------*/
-a.btn,
+/* a.btn,
 input[type="button"],
 input[type="submit"],
 input[type="reset"],
@@ -1325,7 +1325,7 @@ button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
+} */
 .btn:hover,
 .btn:focus,
 input[type="button"]:focus,
@@ -6015,7 +6015,7 @@ tfoot {
 
 /* - Button hover Effects1
 ------------------------------------------------------------- */
-[class^="btn-"] {
+/* [class^="btn-"] {
     display: inline-block;
     padding: 0.75em 1.5em;
     cursor: pointer;
@@ -6026,7 +6026,7 @@ tfoot {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 /*.btn-hvr-effects {
     vertical-align: middle;
